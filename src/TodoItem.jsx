@@ -27,8 +27,8 @@ function TodoItem({ completed, id, title }) {
 
 TodoItem.propTypes = {
   completed: PropTypes.bool,
-  id: PropTypes.str,
-  title: PropTypes.str
+  id: PropTypes.string,
+  title: PropTypes.string
 }
 
 
