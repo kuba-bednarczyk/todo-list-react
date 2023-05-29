@@ -2,23 +2,24 @@ import { useEffect, useState } from 'react';
 import './styles.css';
 import NewTodoForm from './NewTodoForm';
 import TodoList from './TodoList';
+import { TodosContext } from './TodosContext.js';
 
 function App() {
   const [todos, setTodos] = useState(() => {
-    const localValue = localStorage.getItem("ITEMS")
+    const localValue = localStorage.getItem('ITEMS');
     if (localValue == null) return [];
-    return JSON.parse(localValue)
+    return JSON.parse(localValue);
   });
 
   useEffect(() => {
-    localStorage.setItem("ITEMS", JSON.stringify(todos))
-  }, [todos])
+    localStorage.setItem('ITEMS', JSON.stringify(todos));
+  }, [todos]);
 
   function addTodo(title) {
     setTodos((currentTodos) => {
       return [
         ...currentTodos,
-        { id: crypto.randomUUID(), title: title, completed: false },
+        { id: crypto.randomUUID(), title, completed: false },
       ];
     });
   }
@@ -42,11 +43,11 @@ function App() {
   }
 
   return (
-    <>
-    <NewTodoForm addTodo={addTodo} />
-    <h1 className='header'>Todo List</h1>
-    <TodoList todos={todos} toggleTodo={toggleTodo} deleteTodo={deleteTodo}/>
-    </>
+    <TodosContext.Provider value={{addTodo, toggleTodo, deleteTodo, todos, setTodos}}>
+      <NewTodoForm />
+      <h1 className='header'>Todo List</h1>
+      <TodoList />
+    </TodosContext.Provider>
   );
 }
 

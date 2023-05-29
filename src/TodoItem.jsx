@@ -1,4 +1,10 @@
-export default function TodoItem({ completed, id, title, toggleTodo, deleteTodo}) {
+import { useContext } from 'react';
+import { TodosContext } from './TodosContext';
+import { PropTypes } from 'prop-types';
+
+function TodoItem({ completed, id, title }) {
+  const { toggleTodo, deleteTodo } = useContext(TodosContext);
+
   return (
     <li>
     <label>
@@ -18,3 +24,12 @@ export default function TodoItem({ completed, id, title, toggleTodo, deleteTodo}
   </li>
   )
 }
+
+TodoItem.propTypes = {
+  completed: PropTypes.bool,
+  id: PropTypes.str,
+  title: PropTypes.str
+}
+
+
+export default TodoItem;

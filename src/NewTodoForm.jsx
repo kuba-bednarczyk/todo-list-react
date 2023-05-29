@@ -1,14 +1,16 @@
 import { useState } from 'react';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
+import { useContext } from 'react';
+import { TodosContext } from './TodosContext';
 
-function NewTodoForm({ addTodo }) {
+function NewTodoForm() {
   const [newItem, setNewItem] = useState('');
+  const { addTodo } = useContext(TodosContext);
 
   function handleSubmit(e) {
     e.preventDefault();
     if (newItem === '') return;
     addTodo(newItem);
-
     setNewItem('');
   }
 
@@ -27,10 +29,5 @@ function NewTodoForm({ addTodo }) {
     </form>
   );
 }
-
-NewTodoForm.propTypes = {
-  addTodo: PropTypes.func
-}
-
 
 export default NewTodoForm;
