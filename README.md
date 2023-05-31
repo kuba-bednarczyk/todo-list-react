@@ -24,4 +24,4 @@ https://www.youtube.com/watch?v=Rh3tobg7hEo
 
 ## My own features
 
-Added Context API to the project to avoid props drilling.
+* Added Context API to the project to avoid props drilling.
