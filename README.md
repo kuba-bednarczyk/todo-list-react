@@ -21,3 +21,7 @@ $ npm run dev
 Web Dev Simplified: 
 
 https://www.youtube.com/watch?v=Rh3tobg7hEo
+
+## My own features
+
+Added Context API to the project to avoid props drilling.
